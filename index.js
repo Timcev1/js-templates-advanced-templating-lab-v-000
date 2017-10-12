@@ -1,6 +1,3 @@
-function initForm() {
-}
-
 function createRecipe() {
   var recipe = getRecipeVals()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
