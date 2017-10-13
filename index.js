@@ -7,10 +7,20 @@ function init() {
 }
 
 function createRecipe() {
-  var recipe = getRecipeVals()
-  var recipeTemplate = document.getElementById("recipe-template").innerHTML
-  var template = Handlebars.compile(recipeTemplate)
-  document.getElementById("main").innerHTML = template(recipe)
+	var ingredientsNode = document.getElementsByName('ingredients');
+	var newRecipe = {
+		name: document.getElementById('name').value,
+	  description: document.getElementById('recipeDescription').value,
+	  ingredients: []
+	};
+
+  for (var i=0; i < ingredientsNode.length; i++) {
+    newRecipe["ingredients"].push(ingredientsNode[i].value);
+  }
+
+	recipes.push(newRecipe);
+
+	document.getElementById("recipes").innerHTML += Handlebars.compile(document.getElementById("recipe-template").innerHTML)({recipes: recipes.slice(-1)});
 }
 
 function updateRecipe() {
@@ -34,7 +44,7 @@ function displayEditForm() {
   document.getElementById("main").innerHTML = template(recipe)
 }
 
-function getRecipeVals() {
+function getRecip() {
   var ingredientsNodes = document.getElementsByName("ingredients")
   var ingredients = []
   for(var i=0;i<ingredientsNodes.length;i++) {
