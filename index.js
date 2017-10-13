@@ -13,13 +13,10 @@ function createRecipe() {
 	  description: document.getElementById('recipeDescription').value,
 	  ingredients: []
 	};
-
   for (var i=0; i < ingredientsNode.length; i++) {
     newRecipe["ingredients"].push(ingredientsNode[i].value);
   }
-
 	recipes.push(newRecipe);
-
 	document.getElementById("recipes").innerHTML += Handlebars.compile(document.getElementById("recipe-template").innerHTML)({recipes: recipes.slice(-1)});
 }
 
