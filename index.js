@@ -7,14 +7,14 @@ function init() {
 }
 
 function createRecipe() {
-  var recipe = getRecipeVals()
+  var recipe = recipeValues()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
   var template = Handlebars.compile(recipeTemplate)
   document.getElementById("main").innerHTML = template(recipe)
 }
 
 function updateRecipe() {
-  var recipe = getRecipeVals()
+  var recipe = recipeValues()
   var recipeTemplate = document.getElementById("recipe-template").innerHTML
   var template = Handlebars.compile(recipeTemplate)
   document.getElementById("main").innerHTML = template(recipe)
@@ -34,7 +34,7 @@ function displayEditForm() {
   document.getElementById("main").innerHTML = template(recipe)
 }
 
-function getRecip() {
+function recipeValues() {
   var ingredientsNodes = document.getElementsByName("ingredients")
   var ingredients = []
   for(var i=0;i<ingredientsNodes.length;i++) {
